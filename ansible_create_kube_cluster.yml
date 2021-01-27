@@ -1,0 +1,108 @@
+---
+- name: Create Kube cluster
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Create master
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubemaster
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab
+      state: poweredon
+#      wait_for_ip_address: yes
+      datastore: "SSD"
+      networks:
+        - name: VM Network
+          type: static
+          ip: 192.168.250.60
+          gateway: 192.168.250.1
+          domain: vcflab.local
+          netmask: 255.255.255.0
+      customization:
+        hostname: "kubemaster"
+        dns_servers:
+        - 192.168.250.100
+
+  - name: Create kubenode1  
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubenode1
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab    
+      state: poweredon
+#      wait_for_ip_address: yes
+      datastore: "SSD"
+      networks: 
+        - name: VM Network
+          type: static
+          ip: 192.168.250.61
+          gateway: 192.168.250.1
+          domain: vcflab.local
+          netmask: 255.255.255.0
+      customization:
+        hostname: "kubenode1"
+        dns_servers:
+        - 192.168.250.100
+
+
+  - name: Create kubenode2     
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubenode2
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab    
+      state: poweredon
+#      wait_for_ip_address: yes
+      datastore: "SSD"
+      networks: 
+        - name: VM Network
+          type: static
+          ip: 192.168.250.62
+          gateway: 192.168.250.1
+          domain: vcflab.local
+          netmask: 255.255.255.0
+      customization:
+        hostname: "kubenode2"
+        dns_servers:
+        - 192.168.250.100
+
+
+  - name: Create kubenode3
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubenode3
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab    
+      state: poweredon
+#      wait_for_ip_address: yes
+      datastore: "SSD"
+      networks: 
+        - name: VM Network
+          type: static
+          ip: 192.168.250.63
+          gateway: 192.168.250.1
+          domain: vcflab.local
+          netmask: 255.255.255.0
+      customization:
+        hostname: "kubenode3"
+        dns_servers:
+        - 192.168.250.100
+
