@@ -1,0 +1,9 @@
+[kubemaster]
+kubemaster.vcflab.local	ansible_ssh_private_key_file=/home/eirikz/.ssh/deb-template-key	ansible_user=root
+
+[kubenode1]
+kubenode1.vcflab.local      ansible_ssh_private_key_file=/home/eirikz/.ssh/deb-template-key ansible_user=root
+[kubenode2]
+kubenode2.vcflab.local      ansible_ssh_private_key_file=/home/eirikz/.ssh/deb-template-key ansible_user=root
+[kubenode3]
+kubenode3.vcflab.local      ansible_ssh_private_key_file=/home/eirikz/.ssh/deb-template-key ansible_user=root
