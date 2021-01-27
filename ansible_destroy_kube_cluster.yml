@@ -1,0 +1,58 @@
+---
+- name: Remove Kube cluster
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Remove master
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubemaster
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab
+      state: absent
+      force: yes
+
+  - name: Remove kubenode1
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubenode1
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab
+      state: absent
+      force: yes
+
+  - name: Remove kubenode2
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubenode2
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab
+      state: absent
+      force: yes
+
+  - name: Remove kubenode3
+    vmware_guest:
+      hostname: vcsa.vcflab.local
+      username: administrator@vsphere.local
+      password: Password123!
+      validate_certs: False
+      name: kubenode3
+      template: debian-template
+      datacenter: vcflab
+      folder: /kubelab
+      state: absent
+      force: yes
+
